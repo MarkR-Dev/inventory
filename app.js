@@ -26,14 +26,18 @@ app.use("/rarities", raritiesRouter);
 
 // Route to catch all paths that don't exist
 app.use("/{*splat}", (req, res) => {
-  res.status(404).send("Error 404");
+  res
+    .status(404)
+    .render("error", { title: "Inventory | Error", statusCode: 404 });
 });
 
 // Error handler middleware to catch errors throughout the app or previous middleware function if using next(err)
 app.use((err, req, res, next) => {
   console.error(err);
   const statusCode = err.statusCode || 500;
-  res.status(statusCode).send(`Error ${statusCode}`);
+  res
+    .status(statusCode)
+    .render("error", { title: "Inventory | Error", statusCode: statusCode });
 });
 
 const PORT = process.env.PORT || 3000;
