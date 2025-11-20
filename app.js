@@ -1,6 +1,11 @@
 const express = require("express");
 const path = require("path");
 
+const indexRouter = require("./routes/indexRouter");
+const itemsRouter = require("./routes/itemsRouter");
+const categoriesRouter = require("./routes/categoriesRouter");
+const raritiesRouter = require("./routes/raritiesRouter");
+
 const app = express();
 
 // Configure ejs for express
@@ -13,9 +18,11 @@ app.use(express.static(path.join(__dirname, "public")));
 // Parses form data sent from the client into req.body
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("Home");
-});
+// Routers
+app.use("/", indexRouter);
+app.use("/items", itemsRouter);
+app.use("/categories", categoriesRouter);
+app.use("/rarities", raritiesRouter);
 
 // Route to catch all paths that don't exist
 app.use("/{*splat}", (req, res) => {
