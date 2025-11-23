@@ -1,0 +1,43 @@
+:root {
+  --light-blue: #97b5ce;
+  --mid-blue: #4c7ba2;
+  --dark-blue: #0a1015;
+  --off-white: #faf9f6;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  background-image: url("../img/merchant-shop.jpg");
+  background-size: cover;
+  background-position: center;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-link {
+  background-color: var(--dark-blue);
+  text-decoration: none;
+  color: var(--off-white);
+  font-family: monospace;
+  font-size: 2.75rem;
+  border: 3px solid var(--off-white);
+  padding: 15px;
+}
+
+.hero-link:hover {
+  background-color: var(--off-white);
+  color: var(--dark-blue);
+}
+
+@media (width < 500px) {
+  .hero-link {
+    font-size: 1.75rem;
+  }
+}
