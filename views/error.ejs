@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/error.css" />
   </head>
   <body>
     <%- include('partials/navbar') %>
 
-    <h3>This is the ERROR page</h3>
+    <main>
+      <img src="img/test.svg" alt="An error warning icon" width="150" />
+      <h2>Error <%= statusCode %></h2>
+      <a href="/items">Back To Items</a>
+    </main>
   </body>
 </html>
