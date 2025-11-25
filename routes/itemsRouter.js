@@ -1,9 +1,8 @@
 const { Router } = require("express");
+const { getAllItems } = require("../controllers/itemsController");
 
 const itemsRouter = Router();
 
-itemsRouter.get("/", (req, res) => {
-  res.render("items", { title: "Inventory | Items" });
-});
+itemsRouter.get("/", getAllItems);
 
 module.exports = itemsRouter;
