@@ -6,16 +6,41 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/items.css" />
   </head>
   <body>
     <%- include('partials/navbar') %>
 
     <main>
       <div class="wrapper">
-        <div>
+        <div class="items-header">
           <h2>Items</h2>
           <a href="/items/new">New Item</a>
         </div>
+
+        <table>
+          <thead>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Rarity</th>
+            <th class="numeric">Quantity</th>
+            <th class="numeric">Gold Cost</th>
+            <th>Actions</th>
+          </thead>
+
+          <tbody>
+            <% items.map(item => { %>
+            <tr>
+              <td><%= item.item_name %></td>
+              <td><%= item.category_name %></td>
+              <td><%= item.rarity_name %></td>
+              <td class="numeric"><%= item.quantity %></td>
+              <td class="numeric"><%= item.gold_cost %></td>
+              <td></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
       </div>
     </main>
   </body>
