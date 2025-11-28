@@ -18,29 +18,43 @@
           <a href="/items/new">New Item</a>
         </div>
 
-        <table>
-          <thead>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Rarity</th>
-            <th class="numeric">Quantity</th>
-            <th class="numeric">Gold Cost</th>
-            <th>Actions</th>
-          </thead>
+        <div class="table-container">
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Rarity</th>
+              <th class="numeric">Quantity</th>
+              <th class="numeric">Gold Cost</th>
+              <th>Actions</th>
+            </thead>
 
-          <tbody>
-            <% items.map(item => { %>
-            <tr>
-              <td><%= item.item_name %></td>
-              <td><%= item.category_name %></td>
-              <td><%= item.rarity_name %></td>
-              <td class="numeric"><%= item.quantity %></td>
-              <td class="numeric"><%= item.gold_cost %></td>
-              <td></td>
-            </tr>
-            <% }) %>
-          </tbody>
-        </table>
+            <tbody>
+              <% items.map(item => { %>
+              <tr>
+                <td><%= item.item_name %></td>
+                <td><%= item.category_name %></td>
+                <td><%= item.rarity_name %></td>
+                <td class="numeric"><%= item.quantity %></td>
+                <td class="numeric"><%= item.gold_cost %></td>
+                <td class="actions">
+                  <div class="actions-container">
+                    <a href="/">View</a>
+                    <a href="/">Edit</a>
+                    <a href="/">
+                      <img
+                        src="/img/delete-icon.svg"
+                        alt="Trash can delete icon"
+                        width="30"
+                      />
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
   </body>
