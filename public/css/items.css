@@ -3,6 +3,8 @@
   --mid-blue: #4c7ba2;
   --dark-blue: #111d27;
   --off-white: #faf9f6;
+  --action-green: #4ad66d;
+  --action-red: #e5383b;
 }
 
 body {
@@ -37,13 +39,13 @@ main .wrapper {
 .items-header a {
   text-decoration: none;
   font-size: 1.25rem;
-  border: 2px solid #4ad66d;
-  color: #4ad66d;
+  border: 2px solid var(--action-green);
+  color: var(--action-green);
   padding: 10px 15px;
 }
 
 .items-header a:hover {
-  background-color: #4ad66d;
+  background-color: var(--action-green);
   color: var(--off-white);
 }
 

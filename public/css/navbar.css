@@ -1,8 +1,10 @@
 :root {
-  --light-blue: #97b5ce;
+  --light-blue: #b8cee0;
   --mid-blue: #4c7ba2;
   --dark-blue: #111d27;
   --off-white: #faf9f6;
+  --action-green: #4ad66d;
+  --action-red: #e5383b;
 }
 
 nav {

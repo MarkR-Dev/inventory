@@ -5,4 +5,10 @@ async function getAllItems(req, res) {
   res.render("items", { title: "Inventory | Items", items: items });
 }
 
-module.exports = { getAllItems };
+async function getSelectedItem(req, res) {
+  const { id } = req.params;
+  const item = await db.getSelectedItem(id);
+  res.render("selectedItem", { title: "Inventory | Item", item: item[0] });
+}
+
+module.exports = { getAllItems, getSelectedItem };
