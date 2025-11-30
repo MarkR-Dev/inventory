@@ -4,7 +4,7 @@
   --dark-blue: #111d27;
   --off-white: #faf9f6;
   --action-green: #4ad66d;
-  --action-red: #e5383b;
+  --action-red: #de2124;
 }
 
 body {
@@ -23,4 +23,72 @@ main .wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.item-card {
+  max-width: 800px;
+  border: 3px solid var(--dark-blue);
+  margin: 10px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+.item-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.item-info h2 {
+  font-weight: bold;
+}
+
+.item-info p {
+  font-style: italic;
+  line-height: 1.65rem;
+  text-align: right;
+}
+
+.item-actions {
+  text-align: center;
+  padding: 30px 0;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.edit,
+.delete {
+  text-decoration: none;
+  font-size: 1.25rem;
+  border: 2px solid;
+  padding: 20px;
+  width: 180px;
+}
+
+.edit {
+  color: var(--dark-blue);
+}
+
+.edit:hover {
+  color: var(--off-white);
+  background-color: var(--dark-blue);
+}
+
+.delete {
+  color: var(--action-red);
+}
+
+.delete:hover {
+  color: var(--off-white);
+  background-color: var(--action-red);
+}
+
+@media (width < 600px) {
+  .item-card {
+    font-size: 1.2rem;
+  }
 }

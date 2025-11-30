@@ -13,7 +13,42 @@
 
     <main>
       <div class="wrapper">
-        <p><%= item.item_name %></p>
+        <div class="item-card">
+          <div class="item-info">
+            <h2>Item Name:</h2>
+            <p><%= item.item_name %></p>
+          </div>
+
+          <div class="item-info">
+            <h2>Description:</h2>
+            <p><%= item.description %></p>
+          </div>
+
+          <div class="item-info">
+            <h2>Category:</h2>
+            <p><%= item.category_name %></p>
+          </div>
+
+          <div class="item-info">
+            <h2>Rarity:</h2>
+            <p><%= item.rarity_name %></p>
+          </div>
+
+          <div class="item-info">
+            <h2>Quantity:</h2>
+            <p><%= item.quantity %></p>
+          </div>
+
+          <div class="item-info">
+            <h2>Gold Cost:</h2>
+            <p><%= item.gold_cost %></p>
+          </div>
+        </div>
+
+        <div class="item-actions">
+          <a href="/" class="edit">Edit Item</a>
+          <a href="/" class="delete">Delete Item</a>
+        </div>
       </div>
     </main>
   </body>
