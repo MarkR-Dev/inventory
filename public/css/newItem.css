@@ -1,0 +1,26 @@
+:root {
+  --light-blue: #b8cee0;
+  --mid-blue: #4c7ba2;
+  --dark-blue: #111d27;
+  --off-white: #faf9f6;
+  --action-green: #4ad66d;
+  --action-red: #de2124;
+}
+
+body {
+  font-family: monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  padding: 30px 0;
+}
+
+main .wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

@@ -11,4 +11,13 @@ async function getSelectedItem(req, res) {
   res.render("selectedItem", { title: "Inventory | Item", item: item[0] });
 }
 
-module.exports = { getAllItems, getSelectedItem };
+async function getNewItem(req, res) {
+  res.render("newItem", { title: "Inventory | New Item" });
+}
+
+async function postNewItem(req, res) {
+  console.log("in items post middleware");
+  res.redirect("/items");
+}
+
+module.exports = { getAllItems, getSelectedItem, getNewItem, postNewItem };
