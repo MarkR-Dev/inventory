@@ -12,7 +12,13 @@ async function getSelectedItem(req, res) {
 }
 
 async function getNewItem(req, res) {
-  res.render("newItem", { title: "Inventory | New Item" });
+  const categories = await db.getAllCategories();
+  const rarities = await db.getAllRarities();
+  res.render("newItem", {
+    title: "Inventory | New Item",
+    categories: categories,
+    rarities: rarities,
+  });
 }
 
 async function postNewItem(req, res) {

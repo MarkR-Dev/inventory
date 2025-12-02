@@ -31,12 +31,30 @@
 
             <div>
               <label for="item-category">Item Category:</label>
-              select here
+              <select name="item-category" id="item-category">
+                <option value="0" disabled selected class="placeholder">
+                  Select a category:
+                </option>
+                <% categories.map(category => { %>
+                <option value="<%= category.id %>">
+                  <%= category.category_name %>
+                </option>
+                <% }) %>
+              </select>
             </div>
 
             <div>
               <label for="item-rarity">Item Rarity:</label>
-              select here
+              <select name="item-rarity" id="item-rarity">
+                <option value="0" disabled selected class="placeholder">
+                  Select a rarity:
+                </option>
+                <% rarities.map(rarity => { %>
+                <option value="<%= rarity.id %>">
+                  <%= rarity.rarity_name %>
+                </option>
+                <% }) %>
+              </select>
             </div>
 
             <div>

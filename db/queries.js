@@ -21,4 +21,19 @@ async function getSelectedItem(id) {
   return rows;
 }
 
-module.exports = { getAllItems, getSelectedItem };
+async function getAllCategories() {
+  const { rows } = await pool.query(`SELECT * FROM categories;`);
+  return rows;
+}
+
+async function getAllRarities() {
+  const { rows } = await pool.query(`SELECT * FROM rarities;`);
+  return rows;
+}
+
+module.exports = {
+  getAllItems,
+  getSelectedItem,
+  getAllCategories,
+  getAllRarities,
+};
