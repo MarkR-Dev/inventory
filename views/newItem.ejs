@@ -13,25 +13,32 @@
 
     <main>
       <div class="wrapper">
+        <%- include("./partials/form-errors.ejs") %>
+
         <form action="/items/new" method="POST">
           <h2>Add New Item</h2>
           <div class="form-input-container">
             <div>
-              <label for="item-name">Item Name:</label>
-              <input type="text" id="item-name" name="item-name" />
+              <label for="item_name">Item Name:</label>
+              <input
+                type="text"
+                id="item_name"
+                name="item_name"
+                value="<%= prevData.item_name %>"
+              />
             </div>
 
             <div>
-              <label for="item-description">Item Description:</label>
+              <label for="item_description">Item Description:</label>
               <textarea
-                name="item-description"
-                id="item-description"
+                name="item_description"
+                id="item_description"
               ></textarea>
             </div>
 
             <div>
-              <label for="item-category">Item Category:</label>
-              <select name="item-category" id="item-category">
+              <label for="item_category">Item Category:</label>
+              <select name="item_category" id="item_category">
                 <option value="0" disabled selected class="placeholder">
                   Select a category:
                 </option>
@@ -44,8 +51,8 @@
             </div>
 
             <div>
-              <label for="item-rarity">Item Rarity:</label>
-              <select name="item-rarity" id="item-rarity">
+              <label for="item_rarity">Item Rarity:</label>
+              <select name="item_rarity" id="item_rarity">
                 <option value="0" disabled selected class="placeholder">
                   Select a rarity:
                 </option>
@@ -58,21 +65,21 @@
             </div>
 
             <div>
-              <label for="item-quantity">Item Quantity:</label>
+              <label for="item_quantity">Item Quantity:</label>
               <input
                 type="number"
-                name="item-quantity"
-                id="item-quantity"
+                name="item_quantity"
+                id="item_quantity"
                 min="0"
               />
             </div>
 
             <div>
-              <label for="item-gold_cost">Item Cost:</label>
+              <label for="item_gold_cost">Item Cost:</label>
               <input
                 type="number"
-                name="item-gold_cost"
-                id="item-gold_cost"
+                name="item_gold_cost"
+                id="item_gold_cost"
                 min="0"
               />
             </div>
