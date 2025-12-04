@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/newItem.css" />
+    <script src="/utils/previouslySelected.js" defer></script>
   </head>
   <body>
     <%- include("./partials/navbar")%>
@@ -30,10 +31,9 @@
 
             <div>
               <label for="item_description">Item Description:</label>
-              <textarea
-                name="item_description"
-                id="item_description"
-              ></textarea>
+              <textarea name="item_description" id="item_description">
+<%= prevData.item_description %></textarea
+              >
             </div>
 
             <div>
@@ -43,7 +43,10 @@
                   Select a category:
                 </option>
                 <% categories.map(category => { %>
-                <option value="<%= category.id %>">
+                <option
+                  value="<%= category.id %>"
+                  data-category="<%= prevData.item_category == category.id %>"
+                >
                   <%= category.category_name %>
                 </option>
                 <% }) %>
@@ -57,7 +60,10 @@
                   Select a rarity:
                 </option>
                 <% rarities.map(rarity => { %>
-                <option value="<%= rarity.id %>">
+                <option
+                  value="<%= rarity.id %>"
+                  data-rarity="<%= prevData.item_rarity == rarity.id %>"
+                >
                   <%= rarity.rarity_name %>
                 </option>
                 <% }) %>

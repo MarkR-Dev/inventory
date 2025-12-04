@@ -20,7 +20,12 @@ async function getNewItem(req, res) {
     title: "Inventory | New Item",
     categories: categories,
     rarities: rarities,
-    prevData: { item_name: "" },
+    prevData: {
+      item_name: "",
+      item_description: "",
+      item_category: null,
+      item_rarity: null,
+    },
   });
 }
 
@@ -30,7 +35,14 @@ const validateItem = [
     .notEmpty()
     .withMessage("Item name cannot be empty")
     .isLength({ min: 1, max: 255 })
-    .withMessage("Item name length must be between 1 and 255 characters"),
+    .withMessage("Item name length must be between 1-255 characters"),
+  body("item_description")
+    .notEmpty()
+    .withMessage("Item description cannot be empty")
+    .isLength({ min: 1, max: 255 })
+    .withMessage("Item description length must be between 1-255 characters"),
+  body("item_category").notEmpty().withMessage("Item category cannot be empty"),
+  body("item_rarity").notEmpty().withMessage("Item rarity cannot be empty"),
 ];
 
 // todo: add in other form input prevData
@@ -42,6 +54,9 @@ const postNewItem = [
     if (!errors.isEmpty()) {
       const prevData = {
         item_name: req.body.item_name,
+        item_description: req.body.item_description,
+        item_category: req.body.item_category || null,
+        item_rarity: req.body.item_rarity || null,
       };
 
       const categories = await db.getAllCategories();
@@ -61,5 +76,3 @@ const postNewItem = [
 ];
 
 module.exports = { getAllItems, getSelectedItem, getNewItem, postNewItem };
-
-// todo: form validation -> add in other inputs/set empty prevdata, db-add item, css form
