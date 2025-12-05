@@ -25,6 +25,7 @@ async function getNewItem(req, res) {
       item_description: "",
       item_category: null,
       item_rarity: null,
+      item_quantity: "",
     },
   });
 }
@@ -43,6 +44,13 @@ const validateItem = [
     .withMessage("Item description length must be between 1-255 characters"),
   body("item_category").notEmpty().withMessage("Item category cannot be empty"),
   body("item_rarity").notEmpty().withMessage("Item rarity cannot be empty"),
+  body("item_quantity")
+    .notEmpty()
+    .withMessage("Item quantity cannot be empty")
+    .isNumeric({ no_symbols: true })
+    .withMessage("Item quantity must be a numeric value with no symbols")
+    .isInt({ min: 0, max: 99 })
+    .withMessage("Item quantity must be between 0-99"),
 ];
 
 // todo: add in other form input prevData
@@ -52,12 +60,7 @@ const postNewItem = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      const prevData = {
-        item_name: req.body.item_name,
-        item_description: req.body.item_description,
-        item_category: req.body.item_category || null,
-        item_rarity: req.body.item_rarity || null,
-      };
+      const prevData = matchedData(req, { onlyValidData: false });
 
       const categories = await db.getAllCategories();
       const rarities = await db.getAllRarities();
@@ -76,3 +79,5 @@ const postNewItem = [
 ];
 
 module.exports = { getAllItems, getSelectedItem, getNewItem, postNewItem };
+
+// todo: form validation -> add in other inputs/set empty prevdata, db-add item, css form
