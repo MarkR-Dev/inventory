@@ -12,7 +12,6 @@ async function getSelectedItem(req, res) {
   res.render("selectedItem", { title: "Inventory | Item", item: item[0] });
 }
 
-// todo: add in other prevData
 async function getNewItem(req, res) {
   const categories = await db.getAllCategories();
   const rarities = await db.getAllRarities();
@@ -26,11 +25,11 @@ async function getNewItem(req, res) {
       item_category: null,
       item_rarity: null,
       item_quantity: "",
+      item_gold_cost: "",
     },
   });
 }
 
-// todo: add in other form input validation
 const validateItem = [
   body("item_name")
     .notEmpty()
@@ -50,10 +49,16 @@ const validateItem = [
     .isNumeric({ no_symbols: true })
     .withMessage("Item quantity must be a numeric value with no symbols")
     .isInt({ min: 0, max: 99 })
-    .withMessage("Item quantity must be between 0-99"),
+    .withMessage("Item quantity value must be between 0-99"),
+  body("item_gold_cost")
+    .notEmpty()
+    .withMessage("Item cost cannot be empty")
+    .isNumeric({ no_symbols: true })
+    .withMessage("Item cost must be a numeric value with no symbols")
+    .isInt({ min: 0 })
+    .withMessage("Item cost value must be 0 or greater"),
 ];
 
-// todo: add in other form input prevData
 const postNewItem = [
   validateItem,
   async (req, res) => {
@@ -80,4 +85,4 @@ const postNewItem = [
 
 module.exports = { getAllItems, getSelectedItem, getNewItem, postNewItem };
 
-// todo: form validation -> add in other inputs/set empty prevdata, db-add item, css form
+// todo: db-add item, css form
