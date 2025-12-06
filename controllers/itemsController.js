@@ -79,10 +79,12 @@ const postNewItem = [
       });
     }
 
+    const newItem = matchedData(req);
+
+    await db.addNewItem(newItem);
+
     res.redirect("/items");
   },
 ];
 
 module.exports = { getAllItems, getSelectedItem, getNewItem, postNewItem };
-
-// todo: db-add item, css form

@@ -31,9 +31,34 @@ async function getAllRarities() {
   return rows;
 }
 
+async function addNewItem(newItem) {
+  const {
+    item_name,
+    item_description,
+    item_category,
+    item_rarity,
+    item_gold_cost,
+    item_quantity,
+  } = newItem;
+
+  await pool.query(
+    `INSERT INTO items (item_name, description, category_id, rarity_id, gold_cost, quantity)
+     VALUES ($1, $2, $3, $4, $5, $6)`,
+    [
+      item_name,
+      item_description,
+      item_category,
+      item_rarity,
+      item_gold_cost,
+      item_quantity,
+    ]
+  );
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
   getAllCategories,
   getAllRarities,
+  addNewItem,
 };
