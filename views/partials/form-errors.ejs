@@ -1,8 +1,8 @@
 <% if(locals.errors){ %>
-<div>
-  <ul>
+<div class="form-errors-container">
+  <ul class="form-errors-list">
     <% errors.map(error => { %>
-    <li><%= error.msg %></li>
+    <li class="form-error">- <%= error.msg %></li>
     <% }) %>
   </ul>
 </div>

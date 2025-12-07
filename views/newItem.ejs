@@ -18,8 +18,9 @@
 
         <form action="/items/new" method="POST">
           <h2>Add New Item</h2>
+
           <div class="form-input-container">
-            <div>
+            <div class="form-input">
               <label for="item_name">Item Name:</label>
               <input
                 type="text"
@@ -29,14 +30,19 @@
               />
             </div>
 
-            <div>
+            <div class="form-input">
               <label for="item_description">Item Description:</label>
-              <textarea name="item_description" id="item_description">
+              <textarea
+                name="item_description"
+                id="item_description"
+                rows="4"
+                maxlength="255"
+              >
 <%= prevData.item_description %></textarea
               >
             </div>
 
-            <div>
+            <div class="form-input">
               <label for="item_category">Item Category:</label>
               <select name="item_category" id="item_category">
                 <option value="0" disabled selected class="placeholder">
@@ -53,7 +59,7 @@
               </select>
             </div>
 
-            <div>
+            <div class="form-input">
               <label for="item_rarity">Item Rarity:</label>
               <select name="item_rarity" id="item_rarity">
                 <option value="0" disabled selected class="placeholder">
@@ -70,7 +76,7 @@
               </select>
             </div>
 
-            <div>
+            <div class="form-input">
               <label for="item_quantity">Item Quantity:</label>
               <input
                 type="number"
@@ -81,7 +87,7 @@
               />
             </div>
 
-            <div>
+            <div class="form-input">
               <label for="item_gold_cost">Item Cost:</label>
               <input
                 type="number"
@@ -92,7 +98,7 @@
               />
             </div>
 
-            <div>
+            <div class="form-button">
               <button type="submit">Submit</button>
             </div>
           </div>
