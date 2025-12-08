@@ -111,3 +111,13 @@ td {
   text-decoration: underline;
   text-underline-offset: 5px;
 }
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn img {
+  display: block;
+}

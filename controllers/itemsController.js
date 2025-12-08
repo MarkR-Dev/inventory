@@ -87,4 +87,16 @@ const postNewItem = [
   },
 ];
 
-module.exports = { getAllItems, getSelectedItem, getNewItem, postNewItem };
+async function deleteItem(req, res) {
+  // get id from params
+  // do db query delete
+  res.send("delete controller");
+}
+
+module.exports = {
+  getAllItems,
+  getSelectedItem,
+  getNewItem,
+  postNewItem,
+  deleteItem,
+};

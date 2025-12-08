@@ -47,7 +47,10 @@
 
         <div class="item-actions">
           <a href="/" class="edit">Edit Item</a>
-          <a href="/" class="delete">Delete Item</a>
+
+          <form action="/items/<%= item.id %>/delete" method="POST">
+            <button class="delete">Delete Item</button>
+          </form>
         </div>
       </div>
     </main>
