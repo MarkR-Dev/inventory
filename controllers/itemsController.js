@@ -94,10 +94,25 @@ async function deleteItem(req, res) {
   res.redirect("/items");
 }
 
+async function getEditItem(req, res) {
+  const { id } = req.params;
+  const prevData = await db.getSelectedItem(id);
+  const categories = await db.getAllCategories();
+  const rarities = await db.getAllRarities();
+
+  res.render("editItem", {
+    title: "Inventory | Edit Item",
+    categories: categories,
+    rarities: rarities,
+    prevData: prevData,
+  });
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
   getNewItem,
   postNewItem,
   deleteItem,
+  getEditItem,
 };

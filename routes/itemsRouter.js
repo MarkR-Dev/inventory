@@ -5,6 +5,7 @@ const {
   getNewItem,
   postNewItem,
   deleteItem,
+  getEditItem,
 } = require("../controllers/itemsController");
 
 const itemsRouter = Router();
@@ -15,6 +16,9 @@ itemsRouter.get("/new", getNewItem);
 itemsRouter.post("/new", postNewItem);
 
 itemsRouter.get("/:id", getSelectedItem);
+
 itemsRouter.post("/:id/delete", deleteItem);
+
+itemsRouter.get("/:id/edit", getEditItem);
 
 module.exports = itemsRouter;
