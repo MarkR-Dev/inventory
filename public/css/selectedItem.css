@@ -81,6 +81,7 @@ main .wrapper {
 .delete {
   color: var(--action-red);
   background-color: transparent;
+  cursor: pointer;
 }
 
 .delete:hover {

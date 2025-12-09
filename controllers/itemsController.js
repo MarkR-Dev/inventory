@@ -88,9 +88,10 @@ const postNewItem = [
 ];
 
 async function deleteItem(req, res) {
-  // get id from params
-  // do db query delete
-  res.send("delete controller");
+  const { id } = req.params;
+  await db.deleteItem(id);
+
+  res.redirect("/items");
 }
 
 module.exports = {

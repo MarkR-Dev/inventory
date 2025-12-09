@@ -55,10 +55,15 @@ async function addNewItem(newItem) {
   );
 }
 
+async function deleteItem(id) {
+  await pool.query(`DELETE FROM items WHERE id = $1;`, [id]);
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
   getAllCategories,
   getAllRarities,
   addNewItem,
+  deleteItem,
 };
