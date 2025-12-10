@@ -104,8 +104,12 @@ async function getEditItem(req, res) {
     title: "Inventory | Edit Item",
     categories: categories,
     rarities: rarities,
-    prevData: prevData,
+    prevData: prevData[0],
   });
+}
+
+async function postEditItem(req, res) {
+  res.send("post edit");
 }
 
 module.exports = {
@@ -115,4 +119,7 @@ module.exports = {
   postNewItem,
   deleteItem,
   getEditItem,
+  postEditItem,
 };
+
+// todo: validate edit post, update new info in db, css

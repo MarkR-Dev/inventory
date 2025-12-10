@@ -12,7 +12,99 @@
     <%- include("./partials/navbar.ejs") %>
 
     <main>
-      <div class="wrapper"></div>
+      <div class="wrapper">
+        <form action="/items/<%= prevData.id %>/edit" method="POST">
+          <h2>Edit Item</h2>
+
+          <div class="form-input-container">
+            <div class="form-input">
+              <label for="item_name">Item Name:</label>
+              <input
+                type="text"
+                id="item_name"
+                name="item_name"
+                value="<%= prevData.item_name %>"
+              />
+            </div>
+
+            <div class="form-input">
+              <label for="item_description">Item Description:</label>
+              <textarea
+                name="item_description"
+                id="item_description"
+                rows="4"
+                maxlength="255"
+              >
+<%= prevData.description %></textarea
+              >
+            </div>
+
+            <div class="form-input">
+              <label for="item_category">Item Category:</label>
+              <select name="item_category" id="item_category">
+                <option value="0" disabled selected class="placeholder">
+                  Select a category:
+                </option>
+                <% categories.map(category => { %> <% if(prevData.cat_id ==
+                category.id) { %>
+                <option value="<%= category.id %>" selected>
+                  <%= category.category_name %>
+                </option>
+                <% } else { %>
+                <option value="<%= category.id %>">
+                  <%= category.category_name %>
+                </option>
+                <% } %> <% }) %>
+              </select>
+            </div>
+
+            <div class="form-input">
+              <label for="item_rarity">Item Rarity:</label>
+              <select name="item_rarity" id="item_rarity">
+                <option value="0" disabled selected class="placeholder">
+                  Select a rarity:
+                </option>
+                <% rarities.map(rarity => { %> <% if(prevData.rarity_id ==
+                rarity.id) { %>
+                <option value="<%= rarity.id %>" selected>
+                  <%= rarity.rarity_name %>
+                </option>
+                <% } else { %>
+                <option value="<%= rarity.id %>">
+                  <%= rarity.rarity_name %>
+                </option>
+                <% } %> <% }) %>
+              </select>
+            </div>
+
+            <div class="form-input">
+              <label for="item_quantity">Item Quantity:</label>
+              <input
+                type="number"
+                name="item_quantity"
+                id="item_quantity"
+                min="0"
+                value="<%= prevData.quantity %>"
+              />
+            </div>
+
+            <div class="form-input">
+              <label for="item_gold_cost">Item Cost:</label>
+              <input
+                type="number"
+                name="item_gold_cost"
+                id="item_gold_cost"
+                min="0"
+                value="<%= prevData.gold_cost %>"
+              />
+            </div>
+          </div>
+
+          <div class="form-button">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
     </main>
   </body>
 </html>

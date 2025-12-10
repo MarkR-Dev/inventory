@@ -12,7 +12,7 @@ async function getAllItems() {
 
 async function getSelectedItem(id) {
   const { rows } = await pool.query(
-    `SELECT items.id, item_name, description, categories.category_name, rarities.rarity_name, quantity, gold_cost FROM items 
+    `SELECT items.id, item_name, description, categories.category_name, rarities.rarity_name, quantity, gold_cost, categories.id AS cat_id, rarities.id AS rarity_id FROM items 
      LEFT JOIN categories ON items.category_id = categories.id 
      LEFT JOIN rarities ON items.rarity_id = rarities.id
      WHERE items.id = $1;`,
