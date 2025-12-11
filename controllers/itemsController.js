@@ -108,9 +108,38 @@ async function getEditItem(req, res) {
   });
 }
 
-async function postEditItem(req, res) {
-  res.send("post edit");
-}
+const postEditItem = [
+  validateItem,
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      const { id } = req.params;
+      const prevData = matchedData(req, { onlyValidData: false });
+
+      const categories = await db.getAllCategories();
+      const rarities = await db.getAllRarities();
+
+      return res.status(400).render("editItem", {
+        title: "Inventory | Edit Item",
+        categories: categories,
+        rarities: rarities,
+        errors: errors.array(),
+        prevData: {
+          id: id,
+          item_name: prevData.item_name,
+          description: prevData.item_description,
+          cat_id: prevData.item_category,
+          rarity_id: prevData.item_rarity,
+          quantity: prevData.item_quantity,
+          gold_cost: prevData.item_gold_cost,
+        },
+      });
+    }
+
+    res.send("post edit");
+  },
+];
 
 module.exports = {
   getAllItems,
@@ -122,4 +151,4 @@ module.exports = {
   postEditItem,
 };
 
-// todo: validate edit post, update new info in db, css
+// todo: update new info in db

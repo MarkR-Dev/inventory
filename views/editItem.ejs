@@ -13,6 +13,8 @@
 
     <main>
       <div class="wrapper">
+        <%- include("./partials/form-errors.ejs") %>
+
         <form action="/items/<%= prevData.id %>/edit" method="POST">
           <h2>Edit Item</h2>
 
