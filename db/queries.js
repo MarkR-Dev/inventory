@@ -43,7 +43,7 @@ async function addNewItem(newItem) {
 
   await pool.query(
     `INSERT INTO items (item_name, description, category_id, rarity_id, gold_cost, quantity)
-     VALUES ($1, $2, $3, $4, $5, $6)`,
+     VALUES ($1, $2, $3, $4, $5, $6);`,
     [
       item_name,
       item_description,
@@ -59,6 +59,35 @@ async function deleteItem(id) {
   await pool.query(`DELETE FROM items WHERE id = $1;`, [id]);
 }
 
+async function updateItem(item) {
+  const {
+    item_name,
+    item_description,
+    item_category,
+    item_rarity,
+    item_gold_cost,
+    item_quantity,
+    item_id,
+  } = item;
+
+  await pool.query(
+    `
+    UPDATE items
+    SET item_name = $1, description = $2, category_id = $3, rarity_id = $4, gold_cost = $5, quantity = $6
+    WHERE id = $7;
+    `,
+    [
+      item_name,
+      item_description,
+      item_category,
+      item_rarity,
+      item_gold_cost,
+      item_quantity,
+      item_id,
+    ]
+  );
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
@@ -66,4 +95,5 @@ module.exports = {
   getAllRarities,
   addNewItem,
   deleteItem,
+  updateItem,
 };

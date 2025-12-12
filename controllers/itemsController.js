@@ -112,9 +112,9 @@ const postEditItem = [
   validateItem,
   async (req, res) => {
     const errors = validationResult(req);
+    const { id } = req.params;
 
     if (!errors.isEmpty()) {
-      const { id } = req.params;
       const prevData = matchedData(req, { onlyValidData: false });
 
       const categories = await db.getAllCategories();
@@ -137,7 +137,10 @@ const postEditItem = [
       });
     }
 
-    res.send("post edit");
+    const item = matchedData(req);
+    await db.updateItem({ ...item, item_id: id });
+
+    res.redirect("/items");
   },
 ];
 
@@ -150,5 +153,3 @@ module.exports = {
   getEditItem,
   postEditItem,
 };
-
-// todo: update new info in db
