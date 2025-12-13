@@ -25,18 +25,18 @@ main .wrapper {
   padding: 0 20px;
 }
 
-.items-header {
+.categories-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.items-header h2 {
+.categories-header h2 {
   font-size: 2rem;
   color: var(--dark-blue);
 }
 
-.items-header a {
+.categories-header a {
   text-decoration: none;
   font-size: 1.25rem;
   border: 2px solid var(--action-green);
@@ -44,7 +44,7 @@ main .wrapper {
   padding: 10px 15px;
 }
 
-.items-header a:hover {
+.categories-header a:hover {
   background-color: var(--action-green);
   color: var(--off-white);
 }
@@ -89,9 +89,6 @@ tbody tr:hover {
 td {
   font-size: 1.25rem;
   border: 1px solid var(--dark-blue);
-}
-
-.numeric {
   text-align: center;
 }
 
@@ -120,4 +117,11 @@ td {
 
 .delete-btn img {
   display: block;
+}
+
+@media (width < 450px) {
+  .categories-header {
+    flex-direction: column;
+    gap: 20px;
+  }
 }

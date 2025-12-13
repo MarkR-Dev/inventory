@@ -30,7 +30,7 @@ INSERT INTO rarities (rarity_name) VALUES ('Rare');
 
 INSERT INTO categories (category_name) VALUES ('Weapon');
 INSERT INTO categories (category_name) VALUES ('Armour');
-INSERT INTO categories (category_name) VALUES ('Spells');
+INSERT INTO categories (category_name) VALUES ('Spell');
 
 INSERT INTO items (item_name, description, category_id, rarity_id, gold_cost, quantity)
 VALUES ('Iron Sword', 'A basic iron sword', 1, 1, 10, 5);

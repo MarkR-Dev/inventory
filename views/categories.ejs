@@ -6,10 +6,54 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/categories.css" />
   </head>
   <body>
     <%- include('partials/navbar') %>
 
-    <h3>This is the CATEGORIES page</h3>
+    <main>
+      <div class="wrapper">
+        <div class="categories-header">
+          <h2>Categories</h2>
+          <a href="/">New Category</a>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Actions</th>
+            </thead>
+
+            <tbody>
+              <% categories.map(category => { %>
+              <tr>
+                <td><%= category.category_name %></td>
+
+                <td class="actions">
+                  <div class="actions-container">
+                    <a href="/categories/<%= category.id %>">View</a>
+                    <a href="/categories/<%= category.id %>/edit">Edit</a>
+                    <form
+                      action="/categories/<%= category.id %>/delete"
+                      method="POST"
+                    >
+                      <button class="delete-btn">
+                        <img
+                          src="/img/delete-icon.svg"
+                          alt="Trash can delete icon"
+                          width="30"
+                        />
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

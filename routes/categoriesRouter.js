@@ -1,9 +1,8 @@
 const { Router } = require("express");
+const { getAllCategories } = require("../controllers/categoriesController");
 
 const categoriesRouter = Router();
 
-categoriesRouter.get("/", (req, res) => {
-  res.render("categories", { title: "Inventory | Categories" });
-});
+categoriesRouter.get("/", getAllCategories);
 
 module.exports = categoriesRouter;
