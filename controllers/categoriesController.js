@@ -10,4 +10,14 @@ async function getAllCategories(req, res) {
   });
 }
 
-module.exports = { getAllCategories };
+async function getSelectedCategory(req, res) {
+  const { id } = req.params;
+  const categoryItems = await db.getSelectedCategoryItems(id);
+
+  res.render("selectedCategory", {
+    title: "Inventory | Category",
+    items: categoryItems,
+  });
+}
+
+module.exports = { getAllCategories, getSelectedCategory };

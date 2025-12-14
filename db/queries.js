@@ -88,6 +88,17 @@ async function updateItem(item) {
   );
 }
 
+async function getSelectedCategoryItems(id) {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM items
+    WHERE category_id = $1;
+    `,
+    [id]
+  );
+  return rows;
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
@@ -96,4 +107,5 @@ module.exports = {
   addNewItem,
   deleteItem,
   updateItem,
+  getSelectedCategoryItems,
 };

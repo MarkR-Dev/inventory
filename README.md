@@ -10,6 +10,7 @@ Some improvements that could be made:
 - Research into how to limit db queries when redirecting back to a form page after invalid user inputs
 - Research into how to best handle what should happen on a failed db query
 - Research into how to best store selected option element between page reloads in express
+- Look into how to format ejs template code inside visual studio
 
 Merchant shop image credit to TylerTheDesigner:
 https://www.moddb.com/games/merchant/images/concept-for-the-shop
