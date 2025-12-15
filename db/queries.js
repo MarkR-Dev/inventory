@@ -90,12 +90,20 @@ async function updateItem(item) {
 
 async function getSelectedCategoryItems(id) {
   const { rows } = await pool.query(
-    `
-    SELECT * FROM items
-    WHERE category_id = $1;
-    `,
+    `SELECT items.id, item_name, description, categories.category_name, rarities.rarity_name, quantity, gold_cost FROM items 
+     LEFT JOIN categories ON items.category_id = categories.id 
+     LEFT JOIN rarities ON items.rarity_id = rarities.id
+     WHERE category_id = $1
+     ORDER BY item_name;`,
     [id]
   );
+  return rows;
+}
+
+async function getSelectedCategory(id) {
+  const { rows } = await pool.query(`SELECT * FROM categories WHERE id = $1`, [
+    id,
+  ]);
   return rows;
 }
 
@@ -108,4 +116,5 @@ module.exports = {
   deleteItem,
   updateItem,
   getSelectedCategoryItems,
+  getSelectedCategory,
 };

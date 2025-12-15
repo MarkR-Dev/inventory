@@ -24,3 +24,100 @@ main .wrapper {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+.category-items-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-items-header h2 {
+  font-size: 2rem;
+  color: var(--dark-blue);
+}
+
+.category-items-header a {
+  text-decoration: none;
+  font-size: 1.25rem;
+  border: 2px solid var(--action-green);
+  color: var(--action-green);
+  padding: 10px 15px;
+}
+
+.category-items-header a:hover {
+  background-color: var(--action-green);
+  color: var(--off-white);
+}
+
+/* Table */
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  margin-top: 30px;
+  width: 100%;
+  color: var(--dark-blue);
+}
+
+thead {
+  background-color: var(--dark-blue);
+  font-size: 1.5rem;
+  color: var(--off-white);
+  border: 1px solid var(--dark-blue);
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+th:not(:last-of-type) {
+  border-right: 1px solid var(--off-white);
+}
+
+tr:nth-child(even) {
+  background-color: var(--light-blue);
+}
+
+tbody tr:hover {
+  background-color: var(--mid-blue);
+  color: var(--off-white);
+}
+
+td {
+  font-size: 1.25rem;
+  border: 1px solid var(--dark-blue);
+}
+
+.numeric {
+  text-align: center;
+}
+
+.actions-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.actions a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.actions a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn img {
+  display: block;
+}

@@ -12,11 +12,13 @@ async function getAllCategories(req, res) {
 
 async function getSelectedCategory(req, res) {
   const { id } = req.params;
+  const category = await db.getSelectedCategory(id);
   const categoryItems = await db.getSelectedCategoryItems(id);
 
   res.render("selectedCategory", {
     title: "Inventory | Category",
     items: categoryItems,
+    category: category[0],
   });
 }
 
