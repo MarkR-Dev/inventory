@@ -107,6 +107,17 @@ async function getSelectedCategory(id) {
   return rows;
 }
 
+async function addNewCategory(category) {
+  const { category_name } = category;
+
+  await pool.query(
+    `
+    INSERT INTO categories (category_name) VALUES ($1);
+    `,
+    [category_name]
+  );
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
@@ -117,4 +128,5 @@ module.exports = {
   updateItem,
   getSelectedCategoryItems,
   getSelectedCategory,
+  addNewCategory,
 };

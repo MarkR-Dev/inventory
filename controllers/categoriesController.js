@@ -52,10 +52,10 @@ const postNewCategory = [
       });
     }
 
-    // todo: db query to add new category
     const newCategory = matchedData(req);
+    await db.addNewCategory(newCategory);
 
-    res.send("post /new cat");
+    res.redirect("/categories");
   },
 ];
 
