@@ -4,6 +4,7 @@ This is a project to practice NodeJS and postgresql concepts, the project will i
 
 Some improvements that could be made:
 
+- Better file structure to separate related functionality
 - Better CSS to reduce repetition
 - Client side form validation
 - Better variable names when passing data into an ejs template, especially if using similar variables elsewhere and how they are related to the data entries in DB

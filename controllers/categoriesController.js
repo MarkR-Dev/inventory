@@ -59,9 +59,18 @@ const postNewCategory = [
   },
 ];
 
+async function deleteCategory(req, res) {
+  const { id } = req.params;
+
+  await db.deleteCategory(id);
+
+  res.redirect("/categories");
+}
+
 module.exports = {
   getAllCategories,
   getSelectedCategory,
   getNewCategory,
   postNewCategory,
+  deleteCategory,
 };

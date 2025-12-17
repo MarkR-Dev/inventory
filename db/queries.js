@@ -118,6 +118,10 @@ async function addNewCategory(category) {
   );
 }
 
+async function deleteCategory(id) {
+  await pool.query(`DELETE FROM categories WHERE id = $1`, [id]);
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
@@ -129,4 +133,5 @@ module.exports = {
   getSelectedCategoryItems,
   getSelectedCategory,
   addNewCategory,
+  deleteCategory,
 };
