@@ -67,10 +67,45 @@ async function deleteCategory(req, res) {
   res.redirect("/categories");
 }
 
+async function getEditCategory(req, res) {
+  const { id } = req.params;
+  const prevData = await db.getSelectedCategory(id);
+
+  res.render("editCategory", {
+    title: "Inventory | Edit Category",
+    prevData: prevData[0],
+  });
+}
+
+const postEditCategory = [
+  validateCategory,
+  async (req, res) => {
+    const errors = validationResult(req);
+    const { id } = req.params;
+
+    if (!errors.isEmpty()) {
+      const prevData = matchedData(req, { onlyValidData: false });
+
+      return res.status(400).render("editCategory", {
+        title: "Inventory | Edit Category",
+        errors: errors.array(),
+        prevData: { id: id, category_name: prevData.category_name },
+      });
+    }
+
+    const category = matchedData(req);
+    await db.updateCategory({ category_id: id, ...category });
+
+    res.redirect("/categories");
+  },
+];
+
 module.exports = {
   getAllCategories,
   getSelectedCategory,
   getNewCategory,
   postNewCategory,
   deleteCategory,
+  getEditCategory,
+  postEditCategory,
 };

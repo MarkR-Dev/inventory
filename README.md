@@ -8,6 +8,7 @@ Some improvements that could be made:
 - Better CSS to reduce repetition
 - Client side form validation
 - Better variable names when passing data into an ejs template, especially if using similar variables elsewhere and how they are related to the data entries in DB
+- Remember to stick to variable naming conventions when working with data from different environments E.g camel case for JS, underscores for postgresql data
 - Research into how to limit db queries when redirecting back to a form page after invalid user inputs
 - Research into how to best handle what should happen on a failed db query
 - Research into how to best store selected option element between page reloads in express
