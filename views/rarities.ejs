@@ -6,10 +6,54 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/rarities.css" />
   </head>
   <body>
     <%- include('partials/navbar') %>
 
-    <h3>This is the RARITIES page</h3>
+    <main>
+      <div class="wrapper">
+        <div class="rarities-header">
+          <h2>Rarities</h2>
+          <a href="/rarities/new">New Rarity</a>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Actions</th>
+            </thead>
+
+            <tbody>
+              <% rarities.map(rarity => { %>
+              <tr>
+                <td><%= rarity.rarity_name %></td>
+
+                <td class="actions">
+                  <div class="actions-container">
+                    <a href="/rarities/<%= rarity.id %>">View</a>
+                    <a href="/rarities/<%= rarity.id %>/edit">Edit</a>
+                    <form
+                      action="/rarities/<%= rarity.id %>/delete"
+                      method="POST"
+                    >
+                      <button class="delete-btn">
+                        <img
+                          src="/img/delete-icon.svg"
+                          alt="Trash can delete icon"
+                          width="30"
+                        />
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

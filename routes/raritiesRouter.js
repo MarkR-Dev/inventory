@@ -1,9 +1,8 @@
 const { Router } = require("express");
+const { getAllRarities } = require("../controllers/raritiesController");
 
 const raritiesRouter = Router();
 
-raritiesRouter.get("/", (req, res) => {
-  res.render("rarities", { title: "Inventory | Rarities" });
-});
+raritiesRouter.get("/", getAllRarities);
 
 module.exports = raritiesRouter;
