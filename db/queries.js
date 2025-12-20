@@ -134,6 +134,29 @@ async function updateCategory(category) {
   );
 }
 
+async function getSelectedRarity(id) {
+  const { rows } = await pool.query(
+    `
+    SELECT * from rarities
+    WHERE id = $1;
+    `,
+    [id]
+  );
+  return rows;
+}
+
+async function getSelectedRarityItems(id) {
+  const { rows } = await pool.query(
+    `SELECT items.id, item_name, description, categories.category_name, rarities.rarity_name, quantity, gold_cost FROM items 
+     LEFT JOIN categories ON items.category_id = categories.id 
+     LEFT JOIN rarities ON items.rarity_id = rarities.id
+     WHERE rarity_id = $1
+     ORDER BY item_name;`,
+    [id]
+  );
+  return rows;
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
@@ -147,4 +170,6 @@ module.exports = {
   addNewCategory,
   deleteCategory,
   updateCategory,
+  getSelectedRarity,
+  getSelectedRarityItems,
 };

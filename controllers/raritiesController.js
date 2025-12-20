@@ -7,4 +7,23 @@ async function getAllRarities(req, res) {
   res.render("rarities", { title: "Inventory | Rarities", rarities: rarities });
 }
 
-module.exports = { getAllRarities };
+async function getSelectedRarity(req, res) {
+  const { id } = req.params;
+  const rarity = await db.getSelectedRarity(id);
+  const rarityItems = await db.getSelectedRarityItems(id);
+
+  res.render("selectedRarity", {
+    title: "Inventory | Rarity",
+    rarity: rarity[0],
+    items: rarityItems,
+  });
+}
+
+// async function getNewRarity(req, res) {
+//   res.render("newRarity", {
+//     title: "Inventory | New Rarity",
+//     prevData: { rarity_name: "" },
+//   });
+// }
+
+module.exports = { getAllRarities, getSelectedRarity };
