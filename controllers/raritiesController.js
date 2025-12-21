@@ -19,11 +19,45 @@ async function getSelectedRarity(req, res) {
   });
 }
 
-// async function getNewRarity(req, res) {
-//   res.render("newRarity", {
-//     title: "Inventory | New Rarity",
-//     prevData: { rarity_name: "" },
-//   });
-// }
+async function getNewRarity(req, res) {
+  res.render("newRarity", {
+    title: "Inventory | New Rarity",
+    prevData: { rarity_name: "" },
+  });
+}
 
-module.exports = { getAllRarities, getSelectedRarity };
+const validateRarity = [
+  body("rarity_name")
+    .notEmpty()
+    .withMessage("Rarity name cannot be empty")
+    .isLength({ min: 1, max: 255 })
+    .withMessage("Rarity name length must be between 1-255 characters"),
+];
+
+const postNewRarity = [
+  validateRarity,
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      const prevData = matchedData(req, { onlyValidData: false });
+
+      return res.status(400).render("newRarity", {
+        title: "Inventory | New Rarity",
+        errors: errors.array(),
+        prevData: prevData,
+      });
+    }
+
+    const newRarity = matchedData(req);
+    await db.addNewRarity(newRarity);
+    res.redirect("/rarities");
+  },
+];
+
+module.exports = {
+  getAllRarities,
+  getSelectedRarity,
+  getNewRarity,
+  postNewRarity,
+};

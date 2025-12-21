@@ -157,6 +157,16 @@ async function getSelectedRarityItems(id) {
   return rows;
 }
 
+async function addNewRarity(rarity) {
+  const { rarity_name } = rarity;
+  await pool.query(
+    `
+    INSERT INTO rarities (rarity_name) VALUES ($1);
+    `,
+    [rarity_name]
+  );
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
@@ -172,4 +182,5 @@ module.exports = {
   updateCategory,
   getSelectedRarity,
   getSelectedRarityItems,
+  addNewRarity,
 };
