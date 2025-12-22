@@ -5,6 +5,8 @@ const {
   getNewRarity,
   postNewRarity,
   deleteRarity,
+  getEditRarity,
+  postEditRarity,
 } = require("../controllers/raritiesController");
 
 const raritiesRouter = Router();
@@ -17,5 +19,8 @@ raritiesRouter.post("/new", postNewRarity);
 raritiesRouter.get("/:id", getSelectedRarity);
 
 raritiesRouter.post("/:id/delete", deleteRarity);
+
+raritiesRouter.get("/:id/edit", getEditRarity);
+raritiesRouter.post("/:id/edit", postEditRarity);
 
 module.exports = raritiesRouter;

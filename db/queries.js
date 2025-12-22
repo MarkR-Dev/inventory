@@ -177,6 +177,18 @@ async function deleteRarity(id) {
   );
 }
 
+async function updateRarity(rarity) {
+  const { rarity_id, rarity_name } = rarity;
+  await pool.query(
+    `
+    UPDATE rarities
+    SET rarity_name = $1
+    WHERE id = $2;
+    `,
+    [rarity_name, rarity_id]
+  );
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
@@ -194,4 +206,5 @@ module.exports = {
   getSelectedRarityItems,
   addNewRarity,
   deleteRarity,
+  updateRarity,
 };

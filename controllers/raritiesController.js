@@ -63,10 +63,46 @@ async function deleteRarity(req, res) {
   res.redirect("/rarities");
 }
 
+async function getEditRarity(req, res) {
+  const { id } = req.params;
+
+  const prevData = await db.getSelectedRarity(id);
+
+  res.render("editRarity", {
+    title: "Inventory | Edit Rarity",
+    prevData: prevData[0],
+  });
+}
+
+const postEditRarity = [
+  validateRarity,
+  async (req, res) => {
+    const errors = validationResult(req);
+    const { id } = req.params;
+
+    if (!errors.isEmpty()) {
+      const prevData = matchedData(req, { onlyValidData: false });
+
+      return res.status(400).render("editRarity", {
+        title: "Inventory | Edit Rarity",
+        errors: errors.array(),
+        prevData: { id: id, ...prevData },
+      });
+    }
+
+    const rarity = matchedData(req);
+    await db.updateRarity({ rarity_id: id, ...rarity });
+
+    res.redirect("/rarities");
+  },
+];
+
 module.exports = {
   getAllRarities,
   getSelectedRarity,
   getNewRarity,
   postNewRarity,
   deleteRarity,
+  getEditRarity,
+  postEditRarity,
 };
