@@ -55,9 +55,18 @@ const postNewRarity = [
   },
 ];
 
+async function deleteRarity(req, res) {
+  const { id } = req.params;
+
+  await db.deleteRarity(id);
+
+  res.redirect("/rarities");
+}
+
 module.exports = {
   getAllRarities,
   getSelectedRarity,
   getNewRarity,
   postNewRarity,
+  deleteRarity,
 };

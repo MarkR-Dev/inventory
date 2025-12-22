@@ -167,6 +167,16 @@ async function addNewRarity(rarity) {
   );
 }
 
+async function deleteRarity(id) {
+  await pool.query(
+    `
+    DELETE FROM rarities
+    WHERE id = $1;
+    `,
+    [id]
+  );
+}
+
 module.exports = {
   getAllItems,
   getSelectedItem,
@@ -183,4 +193,5 @@ module.exports = {
   getSelectedRarity,
   getSelectedRarityItems,
   addNewRarity,
+  deleteRarity,
 };
